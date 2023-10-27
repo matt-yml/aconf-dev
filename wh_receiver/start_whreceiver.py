@@ -77,6 +77,16 @@ finally:
         connection_object.close()
         print("MySQL connection is closed")
 
+def handle_empty_diskSysPct(value):
+    """
+    Check if the diskSysPct value is an empty string and convert it to 0.
+    :param value: diskSysPct field value
+    :return: Either the original value or 0 if it was an empty string
+    """
+    if value == "":
+        return "0"
+    return value
+
 ## webhook receiver
 app = Flask(__name__)
 
@@ -152,6 +162,7 @@ def webhook():
         hostname = validate_string(request.json["hostname"])
         playstore = validate_string(request.json["playstore"])
         proxyinfo = validate_string(request.json["proxyinfo"])
+        diskSysPct = validate_string(request.json["diskSysPct"])
         diskSysPct = validate_string(request.json["diskSysPct"])
         diskDataPct = validate_string(request.json["diskDataPct"])
         RPL = validate_string(request.json["RPL"])
