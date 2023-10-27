@@ -163,7 +163,7 @@ def webhook():
         playstore = validate_string(request.json["playstore"])
         proxyinfo = validate_string(request.json["proxyinfo"])
         diskSysPct = validate_string(request.json["diskSysPct"])
-        diskSysPct = validate_string(request.json["diskSysPct"])
+        diskSysPct = handle_empty_diskSysPct(request.json["diskSysPct"])
         diskDataPct = validate_string(request.json["diskDataPct"])
         RPL = validate_string(request.json["RPL"])
         memTot = validate_string(request.json["memTot"])
